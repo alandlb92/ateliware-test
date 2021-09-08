@@ -7,14 +7,15 @@ services:
     volumes:
       - .:/code
     ports:
-      - 8001:8001
+      - 8080:80
     depends_on:
       - db
   db:
+    driver: azure_file
     image: postgres:13
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=testesenha
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
